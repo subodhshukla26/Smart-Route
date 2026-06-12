@@ -1,0 +1,193 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-sans: 'Geist Variable', sans-serif;
+    --font-heading: 'Geist Variable', sans-serif;
+    --font-mono: 'Geist Variable', monospace;
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-success: var(--success);
+    --color-warning: var(--warning);
+
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+/* ── Dark Theme (default) ─────────────────────────────────────── */
+:root {
+    color-scheme: dark;
+
+    --background: #0D1117;
+    --foreground: #E8EAF0;
+
+    --card: #161B27;
+    --card-foreground: #E8EAF0;
+
+    --popover: #1E2435;
+    --popover-foreground: #E8EAF0;
+
+    --primary: #1560BD;
+    --primary-foreground: #FFFFFF;
+
+    --secondary: #1E2435;
+    --secondary-foreground: #A0AAB8;
+
+    --muted: #1A2030;
+    --muted-foreground: #6B7280;
+
+    --accent: #15BCA9;
+    --accent-foreground: #FFFFFF;
+
+    --destructive: #EF4444;
+    --border: #1E2D45;
+    --input: #1E2D45;
+    --ring: #1560BD;
+
+    --success: #10B981;
+    --warning: #F59E0B;
+
+    --chart-1: #1560BD;
+    --chart-2: #15BCA9;
+    --chart-3: #10B981;
+    --chart-4: #F59E0B;
+    --chart-5: #EF4444;
+
+    --radius: 0.625rem;
+
+    --sidebar: #0D1117;
+    --sidebar-foreground: #A0AAB8;
+    --sidebar-primary: #1560BD;
+    --sidebar-primary-foreground: #FFFFFF;
+    --sidebar-accent: #161B27;
+    --sidebar-accent-foreground: #E8EAF0;
+    --sidebar-border: #1E2D45;
+    --sidebar-ring: #1560BD;
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground font-sans antialiased;
+    }
+}
+
+@layer utilities {
+     .stat-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.25rem;
+        transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+     .stat-card-hover {
+        box-shadow: 0 0 0 1px var(--primary), 0 4px 24px rgba(21, 96, 189, 0.15);
+        transform: translateY(-1px);
+    }
+
+     .glass-panel {
+        background: rgba(22, 27, 39, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(30, 45, 69, 0.8);
+    }
+
+     .label-meta {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+    }
+}
+
+/* ── Leaflet dark-theme overrides ──────────────────────────────────────────── */
+/* These are intentionally unlayered so they beat Leaflet's own unlayered CSS. */
+
+.leaflet-control-zoom a {
+  background-color: #161B27 !important;
+  color: #E8EAF0 !important;
+  border-color: #1E2D45 !important;
+  font-size: 16px !important;
+  line-height: 26px !important;
+}
+.leaflet-control-zoom a:hover {
+  background-color: #1E2435 !important;
+  color: #E8EAF0 !important;
+}
+.leaflet-bar {
+  border: 1px solid #1E2D45 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden !important;
+}
+.leaflet-control-attribution {
+  background: rgba(13, 17, 23, 0.85) !important;
+  color: #6B7280 !important;
+  font-size: 10px !important;
+  border-radius: 4px 0 0 0 !important;
+}
+.leaflet-control-attribution a {
+  color: #6B7280 !important;
+}
+.leaflet-tooltip {
+  background: #1E2435 !important;
+  border: 1px solid #1E2D45 !important;
+  color: #E8EAF0 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+  padding: 6px 10px !important;
+  font-family: 'Geist Variable', sans-serif !important;
+  font-size: 12px !important;
+}
+.leaflet-tooltip::before {
+  border-top-color: #1E2D45 !important;
+}
+.leaflet-tooltip-bottom::before {
+  border-bottom-color: #1E2D45 !important;
+}
+.leaflet-tooltip-left::before {
+  border-left-color: #1E2D45 !important;
+}
+.leaflet-tooltip-right::before {
+  border-right-color: #1E2D45 !important;
+}
